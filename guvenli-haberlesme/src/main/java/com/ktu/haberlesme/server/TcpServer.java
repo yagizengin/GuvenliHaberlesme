@@ -1,4 +1,4 @@
-package Sunucu.src;
+package com.ktu.haberlesme.server;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -6,6 +6,7 @@ import java.net.Socket;
 
 public class TcpServer {
     private final int port;
+    private final ClientRegistry registry = new ClientRegistry();
 
     public TcpServer(int port) {
         this.port = port;
@@ -19,7 +20,7 @@ public class TcpServer {
                 Socket client = listener.accept();
                 System.out.println("Client connected: " + client.getRemoteSocketAddress());
 
-                ClientHandler handler = new ClientHandler(client);
+                ClientHandler handler = new ClientHandler(client, registry);
                 Thread thread = new Thread(handler);
                 thread.start();
             }

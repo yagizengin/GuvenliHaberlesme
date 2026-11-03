@@ -1,4 +1,4 @@
-package Sunucu.src;
+package com.ktu.haberlesme.server;
 
 import java.io.IOException;
 
